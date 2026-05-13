@@ -105,18 +105,6 @@ function DashboardContent() {
     return summaries.find(c => c?.name === selectedCountry) || null;
   }, [selectedCountry, summaries]);
 
-  const timelineData = useMemo(() => {
-    const dailyData = Array.from(new Set(filteredData.map(f => f.date))).sort().map(date => {
-      const dayFacts = filteredData.filter(f => f.date === date);
-      return {
-        date,
-        volume: dayFacts.reduce((acc, curr) => acc + curr.vehiclesDay, 0),
-        revenue: dayFacts.reduce((acc, curr) => acc + curr.revenueUsd, 0)
-      };
-    });
-    return dailyData;
-  }, [filteredData]);
-
   const [activeTab, setActiveTab] = useState<'ops' | 'ai' | 'data'>('ops');
 
   return (
@@ -314,7 +302,7 @@ function DashboardContent() {
                       colorBy="precision"
                     />
                     <div className="flex flex-col gap-6">
-                      <TimelineChart data={timelineData} />
+                      <TimelineChart data={filteredData} />
                     </div>
                   </div>
                 </motion.div>
@@ -454,7 +442,7 @@ function DashboardContent() {
                       Télécharger Données Excel <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
                     </button>
                     <p className="text-xs text-center text-slate-500 mt-4 leading-normal italic uppercase font-bold">
-                      Dernière mise à jour : 12 mai 2026<br/>Source : Cyclope Global Network
+                      Dernière mise à jour : 12 mai 2025<br/>Source : Cyclope Global Network
                     </p>
                   </div>
                 </motion.div>
@@ -485,7 +473,7 @@ function DashboardContent() {
             <Activity className="w-4 h-4 text-blue-500" /> Global Smart Tolling Dashboard
           </div>
           <p className="text-slate-500 text-xs font-mono font-black border-l-2 border-blue-500 pl-4">
-            &copy; 2026 CYCLOPE VISION AI.
+            &copy; 2025 CYCLOPE VISION AI.
           </p>
         </div>
       </footer>

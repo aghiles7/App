@@ -58,8 +58,8 @@ export const countriesData = [
 
 export const generateTollingFacts = (): TollingFact[] => {
   const facts: TollingFact[] = [];
-  const startDate = new Date();
-  startDate.setDate(startDate.getDate() - 30);
+  const startYear = 2024;
+  const numMonths = 24; // 24 months for 2024 and 2025
 
   const baseData: Record<string, any> = {
     'France': { vol: 1100000, read: 1050500, err: 4.5, auto: 75, prec: 95.5, rev: 32.6, time: 2.1 },
@@ -73,15 +73,14 @@ export const generateTollingFacts = (): TollingFact[] => {
     'Chine': { vol: 20000000, read: 19928000, err: 2.0, auto: 99.9, prec: 99.64, rev: 400, time: 0.7 },
   };
 
-  for (let i = 0; i < 30; i++) {
-    const currentDate = new Date(startDate);
-    currentDate.setDate(startDate.getDate() + i);
+  for (let i = 0; i < numMonths; i++) {
+    const currentDate = new Date(startYear, i, 1);
     const dateStr = currentDate.toISOString().split('T')[0];
 
     countriesData.forEach(c => {
       const base = baseData[c.name];
-      const variance = (Math.random() * 0.05) + 0.975; // Smaller variance for "exact" figures
-      const vehicles = Math.floor(base.vol * variance);
+      const variance = (Math.random() * 0.1) + 0.95; // Slightly more variance for monthly data
+      const vehicles = Math.floor(base.vol * 30 * variance); // Monthly volume approx
       
       facts.push({
         date: dateStr,
@@ -91,8 +90,8 @@ export const generateTollingFacts = (): TollingFact[] => {
         iaLevel: c.iaLevel as any,
         iaClassification: c.ia,
         llmStatus: c.llm,
-        vehiclesDay: vehicles,
-        readingsOk: Math.floor(vehicles * (base.prec / 100)),
+        vehiclesDay: Math.floor(base.vol * variance),
+        readingsOk: Math.floor(Math.floor(base.vol * variance) * (base.prec / 100)),
         errorRate: base.err,
         automationRate: base.auto,
         precisionRate: base.prec,
