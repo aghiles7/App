@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-export type TollingTechnology = 'ANPR + RFID' | 'GNSS + OBU' | 'GNSS + ANPR' | 'RFID + ANPR' | 'FASTag RFID + ANPR' | 'GNSS + ERP' | 'E-Tag + ANPR' | 'RFID + IA vidéo';
+export type TollingTechnology = 'ANPR' | 'GNSS' | 'GNSS/ANPR' | 'RFID/ANPR' | 'RFID' | 'E-TAG';
 
 export interface TollingFact {
   date: string;
@@ -45,15 +45,15 @@ export interface CountrySummary {
 }
 
 export const countriesData = [
-  { id: 'france', name: 'France', region: 'Europe', coords: [46.2276, 2.2137], tech: 'ANPR + RFID', ia: 'Oui', llm: 'Expérimental', iaLevel: 'Intermédiaire', fraud: true, vision: 'Moyen', classif: 'Oui', congestion: 'Faible', adoption: 75 },
-  { id: 'germany', name: 'Allemagne', region: 'Europe', coords: [51.1657, 10.4515], tech: 'GNSS + OBU', ia: 'Oui', llm: 'Non public', iaLevel: 'Avancé', fraud: true, vision: 'Moyen', classif: 'Oui avancée', congestion: 'Moyen', adoption: 99 },
-  { id: 'poland', name: 'Pologne', region: 'Europe', coords: [51.9194, 19.1451], tech: 'GNSS + ANPR', ia: 'Oui', llm: 'Non public', iaLevel: 'Moyen', fraud: true, vision: 'Faible', classif: 'Oui', congestion: 'Faible', adoption: 85 },
-  { id: 'spain', name: 'Espagne', region: 'Europe', coords: [40.4168, -3.7038], tech: 'RFID + ANPR', ia: 'Oui', llm: 'Non public', iaLevel: 'Moyen', fraud: true, vision: 'Moyen', classif: 'Oui', congestion: 'Faible', adoption: 88 },
-  { id: 'india', name: 'Inde', region: 'Asie', coords: [20.5937, 78.9629], tech: 'FASTag RFID + ANPR', ia: 'Oui', llm: 'Non public', iaLevel: 'Avancé', fraud: true, vision: 'Moyen', classif: 'Oui', congestion: 'Moyen', adoption: 97 },
-  { id: 'singapore', name: 'Singapour', region: 'Singapour', coords: [1.3521, 103.8198], tech: 'GNSS + ERP', ia: 'Oui avancée', llm: 'Probable', iaLevel: 'Très avancé', fraud: true, vision: 'Oui avancée', classif: 'Oui', congestion: 'Oui avancée', adoption: 99 },
-  { id: 'usa', name: 'USA', region: 'Amérique', coords: [37.0902, -95.7129], tech: 'RFID + ANPR', ia: 'Oui', llm: 'Localement', iaLevel: 'Très avancé', fraud: true, vision: 'Oui', classif: 'Oui', congestion: 'Moyen', adoption: 94 },
-  { id: 'australia', name: 'Australie', region: 'Australie', coords: [-25.2744, 133.7751], tech: 'E-Tag + ANPR', ia: 'Oui', llm: 'Non public', iaLevel: 'Très avancé', fraud: true, vision: 'Oui', classif: 'Oui', congestion: 'Moyen', adoption: 98 },
-  { id: 'china', name: 'Chine', region: 'Asie', coords: [35.8617, 104.1954], tech: 'RFID + IA vidéo', ia: 'Oui avancée', llm: 'Probable', iaLevel: 'Extrême', fraud: true, vision: 'Oui massive', classif: 'Oui massive', congestion: 'Oui massive', adoption: 99 },
+  { id: 'france', name: 'France', region: 'Europe', coords: [46.2276, 2.2137], tech: 'ANPR', ia: 'Oui', llm: 'Expérimental', iaLevel: 'Intermédiaire', fraud: true, vision: 'Moyen', classif: 'Oui', congestion: 'Faible', adoption: 75 },
+  { id: 'germany', name: 'Allemagne', region: 'Europe', coords: [51.1657, 10.4515], tech: 'GNSS', ia: 'Oui', llm: 'Non public', iaLevel: 'Avancé', fraud: true, vision: 'Moyen', classif: 'Oui avancée', congestion: 'Moyen', adoption: 95 },
+  { id: 'poland', name: 'Pologne', region: 'Europe', coords: [51.9194, 19.1451], tech: 'GNSS/ANPR', ia: 'Oui', llm: 'Non public', iaLevel: 'Moyen', fraud: true, vision: 'Faible', classif: 'Oui', congestion: 'Faible', adoption: 85 },
+  { id: 'spain', name: 'Espagne', region: 'Europe', coords: [40.4168, -3.7038], tech: 'RFID/ANPR', ia: 'Oui', llm: 'Non public', iaLevel: 'Moyen', fraud: true, vision: 'Moyen', classif: 'Oui', congestion: 'Faible', adoption: 88 },
+  { id: 'india', name: 'Inde', region: 'Asie', coords: [20.5937, 78.9629], tech: 'RFID', ia: 'Oui', llm: 'Non public', iaLevel: 'Avancé', fraud: true, vision: 'Moyen', classif: 'Oui', congestion: 'Moyen', adoption: 99.97 },
+  { id: 'singapore', name: 'Singapour', region: 'Singapour', coords: [1.3521, 103.8198], tech: 'GNSS', ia: 'Oui avancée', llm: 'Probable', iaLevel: 'Très avancé', fraud: true, vision: 'Oui avancée', classif: 'Oui', congestion: 'Oui avancée', adoption: 100 },
+  { id: 'usa', name: 'USA', region: 'Amérique', coords: [37.0902, -95.7129], tech: 'RFID/ANPR', ia: 'Oui', llm: 'Localement', iaLevel: 'Très avancé', fraud: true, vision: 'Oui', classif: 'Oui', congestion: 'Moyen', adoption: 92 },
+  { id: 'australia', name: 'Australie', region: 'Australie', coords: [-25.2744, 133.7751], tech: 'E-TAG', ia: 'Oui', llm: 'Non public', iaLevel: 'Très avancé', fraud: true, vision: 'Oui', classif: 'Oui', congestion: 'Moyen', adoption: 100 },
+  { id: 'china', name: 'Chine', region: 'Asie', coords: [35.8617, 104.1954], tech: 'RFID/ANPR', ia: 'Oui avancée', llm: 'Probable', iaLevel: 'Extrême', fraud: true, vision: 'Oui massive', classif: 'Oui massive', congestion: 'Oui massive', adoption: 99.9 },
 ];
 
 export const generateTollingFacts = (): TollingFact[] => {
@@ -62,15 +62,15 @@ export const generateTollingFacts = (): TollingFact[] => {
   startDate.setDate(startDate.getDate() - 30);
 
   const baseData: Record<string, any> = {
-    'France': { vol: 1500000, read: 1440000, err: 4.0, auto: 88, prec: 96, rev: 18, time: 2.1 },
-    'Allemagne': { vol: 2900000, read: 2813000, err: 3.0, auto: 95, prec: 97, rev: 42, time: 1.3 },
-    'Pologne': { vol: 1200000, read: 1152000, err: 4.0, auto: 85, prec: 96, rev: 9, time: 1.8 },
-    'Espagne': { vol: 1800000, read: 1746000, err: 3.0, auto: 88, prec: 97, rev: 16, time: 1.9 },
-    'Inde': { vol: 35000000, read: 34020000, err: 2.8, auto: 94, prec: 97.2, rev: 85, time: 1.4 },
-    'Singapour': { vol: 950000, read: 940500, err: 1.0, auto: 99, prec: 99, rev: 7, time: 0.8 },
-    'USA': { vol: 18000000, read: 17460000, err: 3.0, auto: 95, prec: 97, rev: 110, time: 1.5 },
-    'Australie': { vol: 3500000, read: 3451000, err: 1.4, auto: 98, prec: 98.6, rev: 28, time: 1.0 },
-    'Chine': { vol: 60000000, read: 59400000, err: 1.0, auto: 99, prec: 99, rev: 210, time: 0.7 },
+    'France': { vol: 1100000, read: 1050500, err: 4.5, auto: 75, prec: 95.5, rev: 32.6, time: 2.1 },
+    'Allemagne': { vol: 2900000, read: 2827500, err: 2.5, auto: 95, prec: 97.5, rev: 12.3, time: 1.3 },
+    'Pologne': { vol: 800000, read: 768000, err: 4.0, auto: 85, prec: 96, rev: 3.5, time: 1.8 },
+    'Espagne': { vol: 1200000, read: 1158000, err: 3.5, auto: 88, prec: 96.5, rev: 15, time: 1.9 },
+    'Inde': { vol: 1560000, read: 1559532, err: 0.03, auto: 99.97, prec: 99.97, rev: 2.47, time: 1.4 },
+    'Singapour': { vol: 450000, read: 445500, err: 1.0, auto: 100, prec: 99, rev: 8, time: 0.8 },
+    'USA': { vol: 2800000, read: 2716000, err: 3.0, auto: 92, prec: 97, rev: 13.8, time: 1.5 },
+    'Australie': { vol: 950000, read: 931000, err: 2.0, auto: 100, prec: 98, rev: 11.9, time: 1.0 },
+    'Chine': { vol: 20000000, read: 19928000, err: 2.0, auto: 99.9, prec: 99.64, rev: 400, time: 0.7 },
   };
 
   for (let i = 0; i < 30; i++) {
